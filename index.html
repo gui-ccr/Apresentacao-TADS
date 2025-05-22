@@ -10,7 +10,7 @@
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            overflow-x: hidden; /* Impede a rolagem horizontal no corpo da página */
+            overflow-x: hidden; 
         }
         .slide {
             min-height: 100vh;
@@ -19,18 +19,17 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Padding responsivo: p-5 em telas pequenas, p-10 em telas sm e maiores */
-            padding: 1.25rem; /* p-5 */
+            padding: 1.25rem; 
             text-align: center;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-            width: 100%; /* Garante que o slide ocupe toda a largura */
-            box-sizing: border-box; /* Garante que padding não aumente a largura total */
+            width: 100%; 
+            box-sizing: border-box; 
         }
-        @media (min-width: 640px) { /* sm breakpoint do Tailwind */
+        @media (min-width: 640px) { 
             .slide {
-                padding: 2.5rem; /* p-10 */
+                padding: 2.5rem; 
             }
         }
         .slide.active {
@@ -38,8 +37,8 @@
             transform: translateY(0);
         }
         .slide-content {
-            max-width: 896px; /* Equivalente a max-w-4xl do Tailwind */
-            width: 100%; /* Garante que o conteúdo use a largura disponível até o max-width */
+            max-width: 896px; 
+            width: 100%; 
             box-sizing: border-box;
         }
         .navigation-buttons {
@@ -56,7 +55,7 @@
             z-index: 1000;
         }
         .nav-button {
-            background-color: #4F46E5; /* Indigo */
+            background-color: #4F46E5;
             color: white;
             padding: 10px 20px;
             border-radius: 9999px;
@@ -65,10 +64,10 @@
             transition: background-color 0.3s;
         }
         .nav-button:hover {
-            background-color: #4338CA; /* Darker Indigo */
+            background-color: #4338CA;
         }
         .nav-button:disabled {
-            background-color: #A5B4FC; /* Lighter Indigo, disabled */
+            background-color: #A5B4FC; 
             cursor: not-allowed;
         }
         .progress-bar-container {
@@ -77,51 +76,51 @@
             left: 0;
             width: 100%;
             height: 8px;
-            background-color: #E0E7FF; /* Light Indigo background */
+            background-color: #E0E7FF; 
             z-index: 999;
         }
         .progress-bar {
             height: 100%;
-            background-color: #4F46E5; /* Indigo */
+            background-color: #4F46E5; 
             width: 0%;
             transition: width 0.3s ease-in-out;
         }
         h1 {
-            font-size: 2.25rem; /* Ajustado para melhor visualização em mobile, Tailwind text-3xl ou text-4xl */
+            font-size: 2.25rem; 
             font-weight: bold;
             margin-bottom: 1rem; 
             color: #374151; 
         }
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             h1 {
-                font-size: 3rem; /* Tailwind md:text-5xl ou md:text-6xl */
+                font-size: 3rem; 
             }
         }
-         @media (min-width: 1024px) { /* lg breakpoint */
+         @media (min-width: 1024px) { 
             h1 {
-                font-size: 3.75rem; /* Tailwind lg:text-6xl */
+                font-size: 3.75rem; 
             }
         }
         h2 {
-            font-size: 1.5rem; /* Tailwind text-2xl */
+            font-size: 1.5rem; 
             font-weight: bold;
             margin-bottom: 1.5rem; 
             color: #4F46E5; 
         }
-         @media (min-width: 768px) { /* md breakpoint */
+         @media (min-width: 768px) { 
             h2 {
-                 font-size: 1.875rem; /* Tailwind md:text-3xl */
+                 font-size: 1.875rem; 
             }
         }
         p, li {
-            font-size: 1rem; /* Tailwind text-base ou text-lg */
+            font-size: 1rem; 
             line-height: 1.75; 
             color: #4B5563; 
             margin-bottom: 1rem;
         }
-         @media (min-width: 768px) { /* md breakpoint */
+         @media (min-width: 768px) { 
             p, li {
-                font-size: 1.125rem; /* Tailwind md:text-lg */
+                font-size: 1.125rem; 
             }
         }
         .highlight {
@@ -129,11 +128,11 @@
             font-weight: bold;
         }
         .image-container {
-            margin: 20px auto; /* Adicionado auto para centralizar se houver espaço */
+            margin: 20px auto; 
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            max-width: 100%; /* Garante que o container da imagem não ultrapasse o pai */
+            max-width: 100%; 
         }
         .image-container img {
             max-width: 100%;
@@ -141,23 +140,23 @@
             display: block;
         }
         .icon {
-            width: 60px; /* Reduzido um pouco para mobile */
+            width: 60px; 
             height: 60px;
             margin-bottom: 1rem;
         }
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             .icon {
                 width: 80px;
                 height: 80px;
             }
         }
         .grid-cols-custom {
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* minmax um pouco menor */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
         }
         .card {
             background-color: white;
             border-radius: 12px;
-            padding: 20px; /* Padding um pouco menor */
+            padding: 20px; 
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -166,88 +165,114 @@
             box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
         .logo {
-            height: 40px; /* Reduzido para mobile */
+            height: 40px; 
             margin: 0 8px;
         }
-         @media (min-width: 768px) { /* md breakpoint */
+         @media (min-width: 768px) { 
             .logo {
                 height: 50px;
                 margin: 0 10px;
             }
         }
 
-        /* Estilos para a funcionalidade Gemini */
-        .gemini-feature-container {
+        /* Estilos para a funcionalidade Chatbot */
+        .chatbot-container {
             background-color: #f0f4ff; 
-            padding: 15px; /* Padding menor */
+            padding: 15px; 
             border-radius: 12px;
-            margin-top: 20px; /* Margem menor */
+            margin-top: 20px; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             width: 100%;
             box-sizing: border-box;
         }
-        .gemini-input {
+        .chatbot-input {
             width: 100%;
             padding: 10px 15px;
             border-radius: 8px;
             border: 1px solid #cbd5e1; 
-            margin-bottom: 15px;
-            font-size: 0.9rem; /* Fonte menor */
+            margin-bottom: 10px; /* Reduzido */
+            font-size: 0.9rem; 
              box-sizing: border-box;
         }
-         @media (min-width: 640px) { /* sm breakpoint */
-            .gemini-input {
+         @media (min-width: 640px) { 
+            .chatbot-input {
                 font-size: 1rem;
             }
         }
-        .gemini-button {
-            background-color: #fb923c; 
+        .chatbot-button {
+            background-color: #10B981; /* Verde Esmeralda */
             color: white;
-            padding: 10px 20px; /* Padding menor */
+            padding: 10px 20px; 
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s;
             border: none;
-            font-size: 0.9rem; /* Fonte menor */
+            font-size: 0.9rem; 
+            margin-bottom: 15px; /* Adicionado */
         }
-         @media (min-width: 640px) { /* sm breakpoint */
-            .gemini-button {
+         @media (min-width: 640px) { 
+            .chatbot-button {
                  padding: 10px 25px;
                  font-size: 1rem;
             }
         }
-        .gemini-button:hover {
-            background-color: #f97316; 
+        .chatbot-button:hover {
+            background-color: #059669; /* Verde Esmeralda mais escuro */
         }
-        .gemini-button:disabled {
-            background-color: #fed7aa; 
+        .chatbot-button:disabled {
+            background-color: #6EE7B7; /* Verde Esmeralda claro, desabilitado */
             cursor: not-allowed;
         }
-        .gemini-response-area {
-            margin-top: 15px; /* Margem menor */
-            padding: 10px; /* Padding menor */
+        .chat-area {
+            margin-top: 15px; 
+            padding: 10px; 
             background-color: white;
             border-radius: 8px;
             text-align: left;
-            min-height: 80px; /* Altura mínima menor */
+            min-height: 150px; 
+            max-height: 300px; /* Adicionado para limitar altura e permitir scroll */
+            overflow-y: auto; /* Adicionado para scroll vertical */
             border: 1px solid #e2e8f0;
-            word-wrap: break-word; /* Garante que palavras longas quebrem */
-            overflow-wrap: break-word; /* Equivalente moderno */
+            word-wrap: break-word; 
+            overflow-wrap: break-word; 
         }
-        .gemini-response-area p {
-            font-size: 0.9rem; 
-            color: #334155; 
-            margin-bottom: 0.5rem;
+        .chat-message {
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            max-width: 85%;
+            line-height: 1.4;
         }
-        .gemini-response-area strong {
-            color: #4F46E5; 
+        .chat-message.user {
+            background-color: #DBEAFE; /* Azul claro */
+            color: #1E40AF; /* Azul escuro */
+            margin-left: auto; /* Alinha à direita */
+            text-align: right;
         }
+        .chat-message.assistant {
+            background-color: #F3E8FF; /* Roxo claro */
+            color: #5B21B6; /* Roxo escuro */
+            margin-right: auto; /* Alinha à esquerda */
+            text-align: left;
+        }
+         .chat-message p {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem; /* Menor margem para parágrafos dentro da mensagem */
+        }
+        .chat-message strong { /* Para destacar quem falou */
+            display: block;
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+            color: #4B5563;
+        }
+
+
         .loading-spinner {
             border: 4px solid #f3f3f3; 
-            border-top: 4px solid #fb923c; 
+            border-top: 4px solid #10B981; /* Verde Esmeralda */
             border-radius: 50%;
-            width: 25px; /* Tamanho menor */
+            width: 25px; 
             height: 25px;
             animation: spin 1s linear infinite;
             margin: 10px auto;
@@ -256,7 +281,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* Modal Styles */
         .modal {
             display: none; 
             position: fixed; 
@@ -267,15 +291,15 @@
             height: 100%; 
             overflow: auto; 
             background-color: rgba(0,0,0,0.4); 
-            padding-top: 10%; /* Ajustado para melhor centralização vertical */
+            padding-top: 10%; 
         }
         .modal-content {
             background-color: #fefefe;
-            margin: auto; /* Centraliza horizontalmente e com padding-top no modal */
+            margin: auto; 
             padding: 20px;
             border: 1px solid #888;
             width: 90%; 
-            max-width: 450px; /* Max-width um pouco menor para mobile */
+            max-width: 450px; 
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -283,22 +307,22 @@
         .modal-content h3 {
             color: #4F46E5;
             margin-bottom: 15px;
-            font-size: 1.25rem; /* Tailwind text-xl */
+            font-size: 1.25rem; 
         }
         .modal-content p {
-            font-size: 0.9rem; /* Tailwind text-sm */
+            font-size: 0.9rem; 
             color: #4B5563;
             margin-bottom: 20px;
         }
         .modal-close-button {
             background-color: #4F46E5;
             color: white;
-            padding: 8px 16px; /* Padding menor */
+            padding: 8px 16px; 
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 0.9rem; /* Fonte menor */
+            font-size: 0.9rem; 
         }
         .modal-close-button:hover {
             background-color: #4338CA;
@@ -462,45 +486,20 @@
 
     <div id="slide7" class="slide">
         <div class="slide-content">
-            <img src="https://img.icons8.com/fluency/96/idea.png" alt="Ícone de Ideia" class="icon mx-auto">
-            <h2>O Que Dá Para Fazer com isso? As Possibilidades!</h2>
-            <p>Com Flutter e Dart, a imaginação é quase o limite! Dá para criar:</p>
-            <div class="grid grid-cols-custom gap-4 md:gap-6 my-6 md:my-8">
-                <div class="card">
-                    <img src="https://img.icons8.com/fluency/48/online-store.png" alt="Loja Online" class="h-10 md:h-12 mx-auto mb-2"/>
-                    <p class="font-semibold text-sm md:text-base">Aplicativos de Compras</p>
+            <img src="https://img.icons8.com/fluency/96/robot-2.png" alt="Ícone de Chatbot" class="icon mx-auto"> <h2>Pergunte à IA sobre o Tema! 🤖</h2> <p>Tem alguma dúvida sobre desenvolvimento multiplataforma, Flutter ou Dart? A IA pode ajudar a esclarecer!</p>
+            
+            <div class="chatbot-container">
+                <h3 class="text-xl md:text-2xl font-semibold text-emerald-600 mb-3 md:mb-4">💬 Chat com o Assistente Virtual</h3>
+                <div id="chatArea" class="chat-area">
+                    <div class="chat-message assistant"><p>Olá! Sou seu assistente virtual. Pergunte-me algo sobre Flutter, Dart ou desenvolvimento multiplataforma.</p></div>
                 </div>
-                <div class="card">
-                    <img src="https://img.icons8.com/fluency/48/social-network.png" alt="Rede Social" class="h-10 md:h-12 mx-auto mb-2"/>
-                    <p class="font-semibold text-sm md:text-base">Redes Sociais</p>
-                </div>
-                <div class="card">
-                    <img src="https://img.icons8.com/fluency/48/controller.png" alt="Jogos" class="h-10 md:h-12 mx-auto mb-2"/>
-                    <p class="font-semibold text-sm md:text-base">Jogos</p>
-                </div>
-                <div class="card">
-                    <img src="https://img.icons8.com/fluency/48/todo-list.png" alt="Ferramentas" class="h-10 md:h-12 mx-auto mb-2"/>
-                    <p class="font-semibold text-sm md:text-base">Ferramentas de Produtividade</p>
-                </div>
-                <div class="card">
-                    <img src="https://img.icons8.com/fluency/48/bank.png" alt="Finanças" class="h-10 md:h-12 mx-auto mb-2"/>
-                    <p class="font-semibold text-sm md:text-base">Aplicativos Financeiros</p>
-                </div>
-                 <div class="card">
-                    <img src="https://img.icons8.com/fluency/48/education.png" alt="Educação" class="h-10 md:h-12 mx-auto mb-2"/>
-                    <p class="font-semibold text-sm md:text-base">Apps Educacionais</p>
-                </div>
+                <div id="loadingIndicator" class="loading-spinner" style="display: none;"></div>
+                <input type="text" id="userQuestionInput" class="chatbot-input" placeholder="Digite sua pergunta aqui...">
+                <button id="askChatbotBtn" class="chatbot-button">Perguntar à IA</button>
             </div>
 
-            <div class="gemini-feature-container">
-                <h3 class="text-xl md:text-2xl font-semibold text-orange-500 mb-3 md:mb-4">✨ Explore Ideias de Apps com IA!</h3>
-                <p class="text-xs md:text-sm text-gray-600 mb-3 md:mb-4">Tem um tema em mente? Escreva abaixo e deixe a IA gerar algumas ideias de apps que poderiam ser feitos com Flutter e Dart!</p>
-                <input type="text" id="appThemeInput" class="gemini-input" placeholder="Ex: viagens, culinária, fitness...">
-                <button id="generateAppIdeasBtn" class="gemini-button">Gerar Ideias</button>
-                <div id="loadingIndicator" class="loading-spinner" style="display: none;"></div>
-                <div id="appIdeasResponseArea" class="gemini-response-area" style="display: none;">
-                    </div>
-            </div>
+            <p class="mt-6 md:mt-8 text-sm">Lembre-se: A IA é uma ferramenta para ajudar, mas as informações podem precisar de verificação para contextos críticos.</p>
+            
             <p class="mt-6 md:mt-8">Muitas empresas grandes já usam Flutter! Por exemplo:</p>
             <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4 my-3 md:my-4">
                 <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" class="logo" title="Google">
@@ -560,11 +559,11 @@
         const nextBtn = document.getElementById('nextBtn');
         let currentSlide = 0;
 
-        // Elementos da funcionalidade Gemini
-        const appThemeInput = document.getElementById('appThemeInput');
-        const generateAppIdeasBtn = document.getElementById('generateAppIdeasBtn');
+        // Elementos da funcionalidade Chatbot
+        const userQuestionInput = document.getElementById('userQuestionInput');
+        const askChatbotBtn = document.getElementById('askChatbotBtn');
         const loadingIndicator = document.getElementById('loadingIndicator');
-        const appIdeasResponseArea = document.getElementById('appIdeasResponseArea');
+        const chatArea = document.getElementById('chatArea');
 
         // Elementos do Modal
         const messageModal = document.getElementById('messageModal');
@@ -572,14 +571,12 @@
         const modalMessageText = document.getElementById('modalMessageText');
         const modalCloseBtn = document.getElementById('modalCloseBtn');
 
-        // Função para mostrar o modal
         function showModal(title, message) {
             modalTitle.textContent = title;
             modalMessageText.innerHTML = message; 
             messageModal.style.display = "block";
         }
 
-        // Evento para fechar o modal
         modalCloseBtn.onclick = function() {
             messageModal.style.display = "none";
         }
@@ -588,7 +585,6 @@
                 messageModal.style.display = "none";
             }
         }
-
 
         function updateSlides() {
             slides.forEach((slide, index) => {
@@ -604,13 +600,6 @@
             nextBtn.disabled = currentSlide === slides.length - 1;
         }
 
-        function showSlide(index) {
-            if (index >= 0 && index < slides.length) {
-                currentSlide = index;
-                updateSlides();
-            }
-        }
-        
         function scrollToActiveSlide() {
             const activeSlideElement = slides[currentSlide];
             if (activeSlideElement) {
@@ -637,7 +626,12 @@
         });
 
         document.addEventListener('keydown', (event) => {
-            if (document.activeElement === appThemeInput) return; // Ignora navegação se estiver a escrever
+            if (document.activeElement === userQuestionInput) { // Verifica se o foco está no input do chatbot
+                if (event.key === 'Enter') {
+                    askChatbotBtn.click(); // Simula clique no botão de perguntar
+                }
+                return; 
+            }
 
             if (event.key === 'ArrowRight' || event.key === 'PageDown') {
                 nextBtn.click(); 
@@ -648,24 +642,45 @@
         
         updateSlides();
 
-        // Lógica da API Gemini
-        if (generateAppIdeasBtn) {
-            generateAppIdeasBtn.addEventListener('click', async () => {
-                const theme = appThemeInput.value.trim();
-                if (!theme) {
-                    showModal("Atenção", "Por favor, insira um tema para gerar ideias.");
+        function appendMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', sender); // sender pode ser 'user' ou 'assistant'
+            
+            const senderName = document.createElement('strong');
+            senderName.textContent = sender === 'user' ? 'Você:' : 'Assistente IA:';
+            
+            const messageText = document.createElement('p');
+            messageText.innerHTML = text.replace(/\n/g, '<br>'); // Para formatar quebras de linha da IA
+
+            messageDiv.appendChild(senderName);
+            messageDiv.appendChild(messageText);
+            
+            chatArea.appendChild(messageDiv);
+            chatArea.scrollTop = chatArea.scrollHeight; // Auto-scroll para a última mensagem
+        }
+
+
+        if (askChatbotBtn) {
+            askChatbotBtn.addEventListener('click', async () => {
+                const question = userQuestionInput.value.trim();
+                if (!question) {
+                    showModal("Atenção", "Por favor, digite sua pergunta.");
                     return;
                 }
 
-                loadingIndicator.style.display = 'block';
-                appIdeasResponseArea.style.display = 'none';
-                appIdeasResponseArea.innerHTML = ''; 
-                generateAppIdeasBtn.disabled = true;
+                appendMessage(question, 'user'); // Mostra a pergunta do usuário no chat
+                userQuestionInput.value = ''; // Limpa o campo de entrada
 
-                const prompt = `Gere 3 ideias concisas e criativas para aplicativos móveis que poderiam ser desenvolvidas com Flutter e Dart, baseadas no tema: "${theme}". Para cada ideia, forneça um nome para o app e uma descrição de uma frase. Apresente as ideias como uma lista formatada em HTML, usando <strong> para o nome da app e <p> para a descrição.`;
+                loadingIndicator.style.display = 'block';
+                askChatbotBtn.disabled = true;
+
+                // Adapte o prompt para o chatbot
+                const prompt = `Você é um assistente virtual para uma apresentação sobre desenvolvimento multiplataforma com Flutter e Dart. O público é leigo em programação. Responda à seguinte pergunta de forma clara, concisa e amigável, usando HTML simples para formatação se necessário (como <p>, <strong>, <ul>, <li>): "${question}"`;
 
                 try {
-                    let chatHistory = [];
+                    let chatHistory = []; 
+                    // Para um chatbot mais avançado, você poderia manter o histórico aqui.
+                    // Por simplicidade, cada pergunta é tratada isoladamente por enquanto.
                     chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                     const payload = { contents: chatHistory };
                     const apiKey = "AIzaSyDmLoW7q6ZgccZoIxjsTwu8zvgyKtQbhpo"; 
@@ -688,20 +703,22 @@
                     if (result.candidates && result.candidates.length > 0 &&
                         result.candidates[0].content && result.candidates[0].content.parts &&
                         result.candidates[0].content.parts.length > 0) {
-                        const text = result.candidates[0].content.parts[0].text;
-                        appIdeasResponseArea.innerHTML = text.replace(/\n/g, '<br>'); 
+                        const assistantResponse = result.candidates[0].content.parts[0].text;
+                        appendMessage(assistantResponse, 'assistant');
                     } else {
                         console.error("Resposta da API inesperada:", result);
-                        throw new Error("Não foi possível obter ideias. A resposta da API não continha o conteúdo esperado.");
+                        appendMessage("Desculpe, não consegui processar a resposta da IA.", 'assistant');
+                        throw new Error("Não foi possível obter a resposta. A resposta da API não continha o conteúdo esperado.");
                     }
                 } catch (error) {
-                    console.error('Erro ao gerar ideias:', error);
-                    appIdeasResponseArea.innerHTML = `<p style="color: red;">Ocorreu um erro ao gerar as ideias: ${error.message}. Tente novamente mais tarde.</p>`;
-                    showModal("Erro", `Ocorreu um erro ao gerar as ideias: ${error.message}.<br>Por favor, tente novamente mais tarde ou verifique o console para mais detalhes.`);
+                    console.error('Erro ao obter resposta do chatbot:', error);
+                    const errorMessage = `Ocorreu um erro: ${error.message}. Tente novamente.`;
+                    appendMessage(errorMessage, 'assistant');
+                    showModal("Erro no Chatbot", `${errorMessage}<br>Verifique o console para mais detalhes.`);
                 } finally {
                     loadingIndicator.style.display = 'none';
-                    appIdeasResponseArea.style.display = 'block';
-                    generateAppIdeasBtn.disabled = false;
+                    askChatbotBtn.disabled = false;
+                    userQuestionInput.focus(); // Devolve o foco ao input
                 }
             });
         }
