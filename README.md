@@ -2,7 +2,8 @@
 
 Bem-vindo ao repositório da apresentação interativa sobre Desenvolvimento Multiplataforma, focada em Flutter e Dart! Este projeto foi desenvolvido como uma ferramenta de aprendizado e demonstração, com o objetivo principal de explorar e aplicar conceitos de **engenharia de prompt** em colaboração com o **Gemini**, o modelo de linguagem da Google.
 
-![Cabeçalho Dinâmico da Apresentação](https://img.icons8.com/fluency/128/source-code.png) ## 🎯 Sobre o Projeto
+![Cabeçalho Dinâmico da Apresentação](https://img.icons8.com/fluency/128/source-code.png) 
+## 🎯 Sobre o Projeto
 
 Esta apresentação em formato de slides HTML foi criada para explicar, de forma acessível a um público leigo em programação, os conceitos fundamentais do desenvolvimento multiplataforma, utilizando **Flutter** e **Dart** como estudo de caso.
 
