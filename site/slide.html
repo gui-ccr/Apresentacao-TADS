@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminário: Desvendando o Mundo Multiplataforma com Flutter & Dart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-content {
+            max-width: 900px;
+            width: 100%;
+        }
+        .navigation-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 9999px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+        .nav-button {
+            background-color: #4F46E5; /* Indigo */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #4338CA; /* Darker Indigo */
+        }
+        .nav-button:disabled {
+            background-color: #A5B4FC; /* Lighter Indigo, disabled */
+            cursor: not-allowed;
+        }
+        .progress-bar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: #E0E7FF; /* Light Indigo background */
+            z-index: 999;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #4F46E5; /* Indigo */
+            width: 0%;
+            transition: width 0.3s ease-in-out;
+        }
+        h1 {
+            font-size: 2.5rem; /* Tailwind text-4xl */
+            font-weight: bold;
+            margin-bottom: 1rem; /* Tailwind mb-4 */
+            color: #374151; /* Tailwind text-gray-700 */
+        }
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3.75rem; /* Tailwind md:text-6xl */
+            }
+        }
+        h2 {
+            font-size: 1.875rem; /* Tailwind text-3xl */
+            font-weight: bold;
+            margin-bottom: 1.5rem; /* Tailwind mb-6 */
+            color: #4F46E5; /* Indigo */
+        }
+        p, li {
+            font-size: 1.125rem; /* Tailwind text-lg */
+            line-height: 1.75; /* Tailwind leading-relaxed */
+            color: #4B5563; /* Tailwind text-gray-600 */
+            margin-bottom: 1rem;
+        }
+        .highlight {
+            color: #4F46E5; /* Indigo */
+            font-weight: bold;
+        }
+        .image-container {
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+        .grid-cols-custom {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        .logo {
+            height: 60px;
+            margin: 0 10px;
+        }
+
+        /* Estilos para a funcionalidade Gemini */
+        .gemini-feature-container {
+            background-color: #f0f4ff; /* Fundo azul claro suave */
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .gemini-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1; /* cinza claro */
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        .gemini-button {
+            background-color: #fb923c; /* Laranja */
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+        }
+        .gemini-button:hover {
+            background-color: #f97316; /* Laranja mais escuro */
+        }
+        .gemini-button:disabled {
+            background-color: #fed7aa; /* Laranja claro, desabilitado */
+            cursor: not-allowed;
+        }
+        .gemini-response-area {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            text-align: left;
+            min-height: 100px;
+            border: 1px solid #e2e8f0;
+        }
+        .gemini-response-area p {
+            font-size: 0.95rem;
+            color: #334155; /* Cinza escuro */
+            margin-bottom: 0.5rem;
+        }
+        .gemini-response-area strong {
+            color: #4F46E5; /* Indigo */
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #fb923c; /* Orange */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 5% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 500px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-content h3 {
+            color: #4F46E5;
+            margin-bottom: 15px;
+        }
+        .modal-content p {
+            font-size: 1rem;
+            color: #4B5563;
+            margin-bottom: 20px;
+        }
+        .modal-close-button {
+            background-color: #4F46E5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .modal-close-button:hover {
+            background-color: #4338CA;
+        }
+
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100">
+
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Mensagem</h3>
+            <p id="modalMessageText">Este é um texto de exemplo.</p>
+            <button id="modalCloseBtn" class="modal-close-button">Fechar</button>
+        </div>
+    </div>
+
+    <div id="slide1" class="slide active">
+        <div class="slide-content">
+            <img src="https://img.icons8.com/fluency/96/source-code.png" alt="Ícone de Código" class="icon mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold text-indigo-700 mb-6">Desvendando o Mundo Multiplataforma</h1>
+            <p class="text-2xl text-gray-700 mb-8">Com <span class="font-bold text-sky-500">Flutter</span> & <span class="font-bold text-teal-500">Dart</span>: Criando apps incríveis para todos os telemóveis!</p>
+            <p class="text-lg text-gray-600">Uma viagem ao universo da criação de aplicações, sem precisar ser um perito em programação!</p>
+            <p class="mt-4 text-sm text-gray-500">O Teu Nome Aqui</p>
+        </div>
+    </div>
+
+    <div id="slide2" class="slide">
+        <div class="slide-content">
+            <img src="https://img.icons8.com/fluency/96/question-mark.png" alt="Ícone de Interrogação" class="icon mx-auto">
+            <h2>O Dilema das Aplicações: Uma para cada?</h2>
+            <p>Imaginem que querem uma aplicação super fixe no telemóvel. Antigamente (e às vezes ainda hoje!), os programadores precisavam de construir <span class="highlight">DUAS versões</span> dessa mesma app:</p>
+            <div class="grid md:grid-cols-2 gap-8 my-8">
+                <div class="card">
+                    <img src="https://img.icons8.com/color/96/android-os.png" alt="Logo Android" class="h-16 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-green-600 mb-2">Uma para Android</h3>
+                    <p class="text-sm">Com uma "linguagem" e "ferramentas" específicas para telemóveis Android (Samsung, Xiaomi, Motorola...).</p>
+                </div>
+                <div class="card">
+                     <img src="https://img.icons8.com/ios-filled/96/mac-os.png" alt="Logo Apple iOS" class="h-16 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Outra para iOS</h3>
+                    <p class="text-sm">Com uma "linguagem" e "ferramentas" <span class="highlight">totalmente diferentes</span> para iPhones e iPads da Apple.</p>
+                </div>
+            </div>
+            <p>Isto significa <span class="highlight">mais trabalho, mais tempo e mais custo!</span> É como construir duas casas idênticas, mas com tijolos e plantas diferentes.</p>
+        </div>
+    </div>
+
+    <div id="slide3" class="slide">
+        <div class="slide-content">
+            <img src="https://img.icons8.com/fluency/96/particle-accelerator.png" alt="Ícone de Mágica" class="icon mx-auto">
+            <h2>A Solução Mágica: Desenvolvimento Multiplataforma! ✨</h2>
+            <p>E se pudéssemos construir <span class="highlight">UMA VEZ SÓ</span> e a aplicação funcionasse nos dois tipos de telemóvel (e até em computadores e na web)?</p>
+            <p>Isso é o <span class="highlight">Desenvolvimento Multiplataforma!</span></p>
+            <div class="image-container my-8">
+                <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwJTIwZGV2ZWxvcG1lbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60" alt="Desenvolvimento de Aplicações em Múltiplas Telas" class="rounded-lg">
+                </div>
+            <p>É como ter uma <span class="highlight">receita de bolo universal</span> que, com pequenos ajustes, serve para fazer um bolo delicioso em qualquer tipo de forno!</p>
+        </div>
+    </div>
+
+    <div id="slide4" class="slide">
+        <div class="slide-content">
+            <img src="https://img.icons8.com/color/96/flutter.png" alt="Logo Flutter" class="icon mx-auto">
+            <h2>Conhecendo os Nossos Heróis: Flutter & Dart</h2>
+            <div class="grid md:grid-cols-2 gap-8 my-8">
+                <div class="card">
+                    <img src="https://img.icons8.com/color/96/flutter.png" alt="Logo Flutter" class="h-16 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-sky-600 mb-2">O que é o Flutter?</h3>
+                    <p>Pensem no Flutter como um <span class="highlight">super kit de construção de interfaces</span> para aplicações. Ele é como uma caixa cheia de peças de Lego muito modernas e bonitas (chamadas <span class="highlight">Widgets</span>).</p>
+                    <p>Com estas peças, podemos montar ecrãs de aplicações que são <span class="highlight">lindas e funcionam de forma fluida</span>, como se fossem mágicas!</p>
+                    <p class="mt-2 text-sm text-gray-500">Criado pela Google!</p>
+                </div>
+                <div class="card">
+                    <img src="https://img.icons8.com/color/96/dart.png" alt="Logo Dart" class="h-16 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-2">E o Dart? O que é?</h3>
+                    <p>O Dart é a <span class="highlight">linguagem de programação</span> que o Flutter usa. É como o <span class="highlight">idioma especial</span> que os construtores (programadores) usam para dizer ao Flutter como montar as peças e o que cada uma deve fazer.</p>
+                    <p>Ele é moderno, fácil de aprender (para os programadores!) e foi feito para criar interfaces de utilizador rápidas e bonitas.</p>
+                     <p class="mt-2 text-sm text-gray-500">Também criado pela Google!</p>
+                </div>
+            </div>
+             <p>Juntos, <span class="highlight">Flutter (as peças)</span> e <span class="highlight">Dart (o idioma)</span> permitem criar aplicações incríveis para várias plataformas usando <span class="highlight">um único "manual de instruções" (código fonte)</span>.</p>
+        </div>
+    </div>
+
+    <div id="slide5" class="slide">
+        <div class="slide-content">
+            <img src="https://img.icons8.com/fluency/96/puzzle.png" alt="Ícone de Quebra-Cabeça" class="icon mx-auto">
+            <h2>Como Funciona na Prática? (Sem Códigos Complicados!)</h2>
+            <p>Imaginem que cada pedacinho do ecrã da vossa aplicação favorita (um botão, um texto, uma imagem) é um <span class="highlight">"Widget"</span> – uma peça do nosso kit Flutter.</p>
+            <div class="my-8 p-6 bg-white rounded-xl shadow-xl">
+                <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Construindo com Blocos (Widgets)</h3>
+                <p class="text-left">Pensem assim:</p>
+                <ul class="list-disc list-inside text-left mt-2 space-y-2">
+                    <li>Quer um <span class="highlight">título</span>? Use o widget de Texto!</li>
+                    <li>Precisa de um <span class="highlight">botão</span> para clicar? Use o widget de Botão!</li>
+                    <li>Quer mostrar uma <span class="highlight">foto</span>? Use o widget de Imagem!</li>
+                </ul>
+                <p class="mt-4 text-left">Os programadores combinam estes widgets, como se estivessem a montar um puzzle, para criar o ecrã inteiro da aplicação. <span class="highlight">Tudo é um widget!</span></p>
+                 <div class="flex justify-center items-center space-x-4 my-6">
+                    <div class="text-center">
+                        <img src="https://img.icons8.com/fluency/48/text-box.png" alt="Widget de Texto" class="mx-auto"/>
+                        <p class="text-xs mt-1">Texto</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://img.icons8.com/fluency/48/button.png" alt="Widget de Botão" class="mx-auto"/>
+                        <p class="text-xs mt-1">Botão</p>
+                    </div>
+                     <div class="text-center">
+                        <img src="https://img.icons8.com/fluency/48/image.png" alt="Widget de Imagem" class="mx-auto"/>
+                        <p class="text-xs mt-1">Imagem</p>
+                    </div>
+                     <div class="text-center">
+                        <img src="https://img.icons8.com/fluency/48/plus-math.png" alt="Mais" class="mx-auto"/>
+                         <p class="text-xs mt-1">Combina</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://img.icons8.com/fluency/48/smartphone-tablet.png" alt="App" class="mx-auto"/>
+                        <p class="text-xs mt-1">App Linda!</p>
+                    </div>
+                </div>
+            </div>
+            <p>O mais fixe? O Flutter pega neste "manual de instruções" feito em Dart e <span class="highlight">traduz automaticamente</span> para que funcione perfeitamente tanto no Android quanto no iOS. É como mágica!</p>
+        </div>
+    </div>
+
+    <div id="slide6" class="slide">
+        <div class="slide-content">
+             <img src="https://img.icons8.com/fluency/96/groups.png" alt="Ícone de Pessoas Felizes" class="icon mx-auto">
+            <h2>Vantagens para Toda a Gente! 🎉</h2>
+            <p>Usar Flutter e Dart para desenvolvimento multiplataforma traz benefícios para todos:</p>
+            <div class="grid md:grid-cols-2 gap-8 my-8">
+                <div class="card">
+                    <img src="https://img.icons8.com/fluency/48/rocket.png" alt="Foguete" class="h-12 mx-auto mb-3"/>
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-2">Para quem CRIA (Programadores):</h3>
+                    <ul class="list-disc list-inside text-left text-sm space-y-1">
+                        <li><span class="highlight">Mais Rápido:</span> Escreve o código uma vez só.</li>
+                        <li><span class="highlight">Mais Fácil:</span> Ferramentas que ajudam muito.</li>
+                        <li><span class="highlight">Resultados Lindos:</span> Apps com visual moderno.</li>
+                        <li><span class="highlight">Comunidade Ativa:</span> Muita gente a usar e a ajudar.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <img src="https://img.icons8.com/fluency/48/smiling-face-with-heart.png" alt="Rosto Feliz" class="h-12 mx-auto mb-3"/>
+                    <h3 class="text-xl font-semibold text-pink-600 mb-2">Para quem USA (Vocês!):</h3>
+                     <ul class="list-disc list-inside text-left text-sm space-y-1">
+                        <li><span class="highlight">Apps Incríveis:</span> Visual bonito e que funciona bem.</li>
+                        <li><span class="highlight">Consistência:</span> A app parece a mesma e funciona igual no Android e no iPhone do amigo.</li>
+                        <li><span class="highlight">Mais Apps Disponíveis:</span> Como é mais fácil de fazer, mais ideias viram apps!</li>
+                        <li><span class="highlight">Atualizações Rápidas:</span> Novidades chegam para todos ao mesmo tempo.</li>
+                    </ul>
+                </div>
+            </div>
+             <p>No final, toda a gente sai a ganhar com aplicações melhores, feitas de forma mais inteligente!</p>
+        </div>
+    </div>
+
+    <div id="slide7" class="slide">
+        <div class="slide-content">
+            <img src="https://img.icons8.com/fluency/96/idea.png" alt="Ícone de Ideia" class="icon mx-auto">
+            <h2>O Que Dá Para Fazer com Isto? As Possibilidades!</h2>
+            <p>Com Flutter e Dart, a imaginação é quase o limite! Dá para criar:</p>
+            <div class="grid grid-cols-custom gap-6 my-8">
+                <div class="card">
+                    <img src="https://img.icons8.com/fluency/48/online-store.png" alt="Loja Online" class="h-12 mx-auto mb-2"/>
+                    <p class="font-semibold">Aplicações de Compras</p>
+                </div>
+                <div class="card">
+                    <img src="https://img.icons8.com/fluency/48/social-network.png" alt="Rede Social" class="h-12 mx-auto mb-2"/>
+                    <p class="font-semibold">Redes Sociais</p>
+                </div>
+                <div class="card">
+                    <img src="https://img.icons8.com/fluency/48/controller.png" alt="Jogos" class="h-12 mx-auto mb-2"/>
+                    <p class="font-semibold">Jogos</p>
+                </div>
+                <div class="card">
+                    <img src="https://img.icons8.com/fluency/48/todo-list.png" alt="Ferramentas" class="h-12 mx-auto mb-2"/>
+                    <p class="font-semibold">Ferramentas de Produtividade</p>
+                </div>
+                <div class="card">
+                    <img src="https://img.icons8.com/fluency/48/bank.png" alt="Finanças" class="h-12 mx-auto mb-2"/>
+                    <p class="font-semibold">Aplicações Financeiras</p>
+                </div>
+                 <div class="card">
+                    <img src="https://img.icons8.com/fluency/48/education.png" alt="Educação" class="h-12 mx-auto mb-2"/>
+                    <p class="font-semibold">Apps Educacionais</p>
+                </div>
+            </div>
+
+            <div class="gemini-feature-container">
+                <h3 class="text-2xl font-semibold text-orange-500 mb-4">✨ Explore Ideias de Apps com IA!</h3>
+                <p class="text-sm text-gray-600 mb-4">Tem um tema em mente? Escreva abaixo e deixe a IA gerar algumas ideias de apps que poderiam ser feitos com Flutter e Dart!</p>
+                <input type="text" id="appThemeInput" class="gemini-input" placeholder="Ex: viagens, culinária, fitness...">
+                <button id="generateAppIdeasBtn" class="gemini-button">Gerar Ideias</button>
+                <div id="loadingIndicator" class="loading-spinner" style="display: none;"></div>
+                <div id="appIdeasResponseArea" class="gemini-response-area" style="display: none;">
+                    </div>
+            </div>
+            <p class="mt-8">Muitas empresas grandes já usam Flutter! Por exemplo:</p>
+            <div class="flex flex-wrap justify-center items-center gap-4 my-4">
+                <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" class="logo h-10" title="Google">
+                <img src="https://img.icons8.com/color/48/bmw.png" alt="BMW" class="logo h-10" title="BMW">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Alibaba.com_logo.svg/1024px-Alibaba.com_logo.svg.png" alt="Alibaba" class="logo h-8" title="Alibaba">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nubank_logo_2021.svg/2560px-Nubank_logo_2021.svg.png" alt="Nubank" class="logo h-10" title="Nubank">
+            </div>
+            <p class="text-sm text-gray-500">(Exemplos de empresas que usam Flutter em alguns dos seus produtos. Logos são marcas registadas dos seus respetivos proprietários.)</p>
+        </div>
+    </div>
+
+    <div id="slide8" class="slide">
+        <div class="slide-content">
+            <img src="https://img.icons8.com/fluency/96/globe.png" alt="Ícone de Globo" class="icon mx-auto">
+            <h2>O Futuro é Multiplataforma! 🚀</h2>
+            <p>A capacidade de criar aplicações para diferentes sistemas com <span class="highlight">menos esforço e mais qualidade</span> está a mudar a forma como a tecnologia é desenvolvida.</p>
+            <div class="image-container my-8">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRlY2hub2xvZ3klMjBmdXR1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60" alt="Futuro da Tecnologia" class="rounded-lg">
+            </div>
+            <p>Para quem se interessa por tecnologia, mesmo sem querer ser programador, entender estas tendências é super fixe! Mostra como as coisas estão a ficar <span class="highlight">mais conectadas e acessíveis</span>.</p>
+            <p>Flutter e Dart são protagonistas nesta revolução, abrindo portas para <span class="highlight">mais inovação e criatividade</span> no mundo das aplicações.</p>
+        </div>
+    </div>
+
+    <div id="slide9" class="slide">
+        <div class="slide-content">
+            <img src="https://img.icons8.com/fluency/96/speech-bubble-with-dots.png" alt="Ícone de Perguntas" class="icon mx-auto">
+            <h1 class="text-indigo-700">Perguntas?</h1>
+            <p class="text-2xl text-gray-700 my-8">Agora é convosco! Alguma dúvida ou curiosidade sobre este universo?</p>
+            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cXVlc3Rpb25zfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60" alt="Pessoas a discutir" class="rounded-lg shadow-lg max-w-md mx-auto">
+            </div>
+    </div>
+
+    <div id="slide10" class="slide">
+        <div class="slide-content">
+            <img src="https://img.icons8.com/fluency/96/confetti.png" alt="Ícone de Confete" class="icon mx-auto">
+            <h1 class="text-indigo-700">Obrigado!</h1>
+            <p class="text-2xl text-gray-700 my-8">Espero que tenham gostado de conhecer um pouquinho sobre o desenvolvimento multiplataforma com Flutter e Dart!</p>
+            <p class="text-gray-600">Contacto: [O Teu Email ou Rede Social, se desejar]</p>
+            <div class="mt-10">
+                <img src="https://img.icons8.com/color/48/flutter.png" alt="Logo Flutter" class="inline-block h-12">
+                <img src="https://img.icons8.com/color/48/dart.png" alt="Logo Dart" class="inline-block h-12">
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation-buttons">
+        <button id="prevBtn" class="nav-button">Anterior</button>
+        <button id="nextBtn" class="nav-button">Próximo</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+
+        // Elementos da funcionalidade Gemini
+        const appThemeInput = document.getElementById('appThemeInput');
+        const generateAppIdeasBtn = document.getElementById('generateAppIdeasBtn');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const appIdeasResponseArea = document.getElementById('appIdeasResponseArea');
+
+        // Elementos do Modal
+        const messageModal = document.getElementById('messageModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessageText = document.getElementById('modalMessageText');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+        // Função para mostrar o modal
+        function showModal(title, message) {
+            modalTitle.textContent = title;
+            modalMessageText.innerHTML = message; // Usar innerHTML para permitir tags <br>
+            messageModal.style.display = "block";
+        }
+
+        // Evento para fechar o modal
+        modalCloseBtn.onclick = function() {
+            messageModal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == messageModal) {
+                messageModal.style.display = "none";
+            }
+        }
+
+
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = progress + '%';
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+        }
+
+        function showSlide(index) {
+            if (index >= 0 && index < slides.length) {
+                currentSlide = index;
+                updateSlides();
+            }
+        }
+        
+        function scrollToActiveSlide() {
+            const activeSlideElement = slides[currentSlide];
+            if (activeSlideElement) {
+                setTimeout(() => {
+                    activeSlideElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlides();
+                scrollToActiveSlide();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlides();
+                scrollToActiveSlide();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight' || event.key === 'PageDown') {
+                if (document.activeElement !== appThemeInput) nextBtn.click(); // Não avançar se estiver a escrever no input
+            } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+                 if (document.activeElement !== appThemeInput) prevBtn.click(); // Não retroceder se estiver a escrever no input
+            }
+        });
+        
+        updateSlides();
+
+        // Lógica da API Gemini
+        if (generateAppIdeasBtn) {
+            generateAppIdeasBtn.addEventListener('click', async () => {
+                const theme = appThemeInput.value.trim();
+                if (!theme) {
+                    showModal("Atenção", "Por favor, insira um tema para gerar ideias.");
+                    return;
+                }
+
+                loadingIndicator.style.display = 'block';
+                appIdeasResponseArea.style.display = 'none';
+                appIdeasResponseArea.innerHTML = ''; // Limpar respostas anteriores
+                generateAppIdeasBtn.disabled = true;
+
+                const prompt = `Gere 3 ideias concisas e criativas para aplicações móveis que poderiam ser desenvolvidas com Flutter e Dart, baseadas no tema: "${theme}". Para cada ideia, forneça um nome para a app e uma descrição de uma frase. Apresente as ideias como uma lista formatada em HTML, usando <strong> para o nome da app e <p> para a descrição.`;
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Deixar vazio para o Canvas fornecer
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorBody = await response.text();
+                        console.error("Erro na API:", response.status, errorBody);
+                        throw new Error(`Erro ao comunicar com a API: ${response.status}. Detalhes no console.`);
+                    }
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        // A API Gemini pode retornar Markdown, vamos formatar um pouco se necessário
+                        // ou idealmente pedir HTML diretamente no prompt se a API suportar bem.
+                        // Como pedi HTML no prompt, espera-se que 'text' já seja HTML.
+                        appIdeasResponseArea.innerHTML = text.replace(/\n/g, '<br>'); // Substituir novas linhas por <br> para melhor formatação se não for HTML puro
+                    } else {
+                        console.error("Resposta da API inesperada:", result);
+                        throw new Error("Não foi possível obter ideias. A resposta da API não continha o conteúdo esperado.");
+                    }
+                } catch (error) {
+                    console.error('Erro ao gerar ideias:', error);
+                    appIdeasResponseArea.innerHTML = `<p style="color: red;">Ocorreu um erro ao gerar as ideias: ${error.message}. Tente novamente mais tarde.</p>`;
+                    showModal("Erro", `Ocorreu um erro ao gerar as ideias: ${error.message}.<br>Por favor, tente novamente mais tarde ou verifique a consola para mais detalhes.`);
+                } finally {
+                    loadingIndicator.style.display = 'none';
+                    appIdeasResponseArea.style.display = 'block';
+                    generateAppIdeasBtn.disabled = false;
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
