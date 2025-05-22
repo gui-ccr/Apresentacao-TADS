@@ -167,6 +167,7 @@
         .logo {
             height: 40px; 
             margin: 0 8px;
+            object-fit: contain; 
         }
          @media (min-width: 768px) { 
             .logo {
@@ -190,7 +191,7 @@
             padding: 10px 15px;
             border-radius: 8px;
             border: 1px solid #cbd5e1; 
-            margin-bottom: 10px; /* Reduzido */
+            margin-bottom: 10px; 
             font-size: 0.9rem; 
              box-sizing: border-box;
         }
@@ -200,7 +201,7 @@
             }
         }
         .chatbot-button {
-            background-color: #10B981; /* Verde Esmeralda */
+            background-color: #10B981; 
             color: white;
             padding: 10px 20px; 
             border-radius: 8px;
@@ -209,7 +210,7 @@
             transition: background-color 0.3s;
             border: none;
             font-size: 0.9rem; 
-            margin-bottom: 15px; /* Adicionado */
+            margin-bottom: 15px; 
         }
          @media (min-width: 640px) { 
             .chatbot-button {
@@ -218,10 +219,10 @@
             }
         }
         .chatbot-button:hover {
-            background-color: #059669; /* Verde Esmeralda mais escuro */
+            background-color: #059669; 
         }
         .chatbot-button:disabled {
-            background-color: #6EE7B7; /* Verde Esmeralda claro, desabilitado */
+            background-color: #6EE7B7; 
             cursor: not-allowed;
         }
         .chat-area {
@@ -231,8 +232,8 @@
             border-radius: 8px;
             text-align: left;
             min-height: 150px; 
-            max-height: 300px; /* Adicionado para limitar altura e permitir scroll */
-            overflow-y: auto; /* Adicionado para scroll vertical */
+            max-height: 300px; 
+            overflow-y: auto; 
             border: 1px solid #e2e8f0;
             word-wrap: break-word; 
             overflow-wrap: break-word; 
@@ -245,22 +246,22 @@
             line-height: 1.4;
         }
         .chat-message.user {
-            background-color: #DBEAFE; /* Azul claro */
-            color: #1E40AF; /* Azul escuro */
-            margin-left: auto; /* Alinha à direita */
+            background-color: #DBEAFE; 
+            color: #1E40AF; 
+            margin-left: auto; 
             text-align: right;
         }
         .chat-message.assistant {
-            background-color: #F3E8FF; /* Roxo claro */
-            color: #5B21B6; /* Roxo escuro */
-            margin-right: auto; /* Alinha à esquerda */
+            background-color: #F3E8FF; 
+            color: #5B21B6; 
+            margin-right: auto; 
             text-align: left;
         }
          .chat-message p {
             font-size: 0.9rem;
-            margin-bottom: 0.25rem; /* Menor margem para parágrafos dentro da mensagem */
+            margin-bottom: 0.25rem; 
         }
-        .chat-message strong { /* Para destacar quem falou */
+        .chat-message strong { 
             display: block;
             font-size: 0.75rem;
             margin-bottom: 4px;
@@ -270,7 +271,7 @@
 
         .loading-spinner {
             border: 4px solid #f3f3f3; 
-            border-top: 4px solid #10B981; /* Verde Esmeralda */
+            border-top: 4px solid #10B981; 
             border-radius: 50%;
             width: 25px; 
             height: 25px;
@@ -377,7 +378,7 @@
 
     <div id="slide3" class="slide">
         <div class="slide-content">
-            <img src="https://img.icons8.com/fluency/96/particle-accelerator.png" alt="Ícone de Mágica" class="icon mx-auto">
+            <img src="https://img.icons8.com/fluency/96/light-on.png" alt="Ícone de Solução/Ideia" class="icon mx-auto">
             <h2>A Solução Mágica: Desenvolvimento Multiplataforma! ✨</h2>
             <p>E se pudéssemos construir <span class="highlight">UMA VEZ SÓ</span> e o aplicativo funcionasse nos dois tipos de smartphone (e até em computadores e na web)?</p>
             <p>Isso é o <span class="highlight">Desenvolvimento Multiplataforma!</span></p>
@@ -504,8 +505,8 @@
             <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4 my-3 md:my-4">
                 <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" class="logo" title="Google">
                 <img src="https://img.icons8.com/color/48/bmw.png" alt="BMW" class="logo" title="BMW">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Alibaba.com_logo.svg/1024px-Alibaba.com_logo.svg.png" alt="Alibaba" class="logo h-6 md:h-8" title="Alibaba">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nubank_logo_2021.svg/2560px-Nubank_logo_2021.svg.png" alt="Nubank" class="logo" title="Nubank">
+                <img src="https://logo.clearbit.com/alibaba.com" alt="Alibaba" class="logo" title="Alibaba">
+                 <img src="https://logo.clearbit.com/nubank.com.br" alt="Nubank" class="logo" title="Nubank">
             </div>
             <p class="text-xs text-gray-500">(Exemplos de empresas que usam Flutter em alguns dos seus produtos. Logos são marcas registradas dos seus respectivos proprietários.)</p>
         </div>
@@ -513,7 +514,7 @@
 
     <div id="slide8" class="slide">
         <div class="slide-content">
-            <img src="https://img.icons8.com/fluency/96/globe.png" alt="Ícone de Globo" class="icon mx-auto">
+            <img src="https://img.icons8.com/external-justicon-flat-justicon/64/external-globe-map-and-location-justicon-flat-justicon.png" alt="Ícone de Globo" class="icon mx-auto">
             <h2>O Futuro é Multiplataforma! 🚀</h2>
             <p>A capacidade de criar aplicativos para diferentes sistemas com <span class="highlight">menos esforço e mais qualidade</span> está mudando a forma como a tecnologia é desenvolvida.</p>
             <div class="image-container my-6 md:my-8">
@@ -644,19 +645,19 @@
 
         function appendMessage(text, sender) {
             const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message', sender); // sender pode ser 'user' ou 'assistant'
+            messageDiv.classList.add('chat-message', sender); 
             
             const senderName = document.createElement('strong');
             senderName.textContent = sender === 'user' ? 'Você:' : 'Assistente IA:';
             
             const messageText = document.createElement('p');
-            messageText.innerHTML = text.replace(/\n/g, '<br>'); // Para formatar quebras de linha da IA
+            messageText.innerHTML = text.replace(/\n/g, '<br>'); 
 
             messageDiv.appendChild(senderName);
             messageDiv.appendChild(messageText);
             
             chatArea.appendChild(messageDiv);
-            chatArea.scrollTop = chatArea.scrollHeight; // Auto-scroll para a última mensagem
+            chatArea.scrollTop = chatArea.scrollHeight; 
         }
 
 
@@ -668,19 +669,16 @@
                     return;
                 }
 
-                appendMessage(question, 'user'); // Mostra a pergunta do usuário no chat
-                userQuestionInput.value = ''; // Limpa o campo de entrada
+                appendMessage(question, 'user'); 
+                userQuestionInput.value = ''; 
 
                 loadingIndicator.style.display = 'block';
                 askChatbotBtn.disabled = true;
 
-                // Adapte o prompt para o chatbot
                 const prompt = `Você é um assistente virtual para uma apresentação sobre desenvolvimento multiplataforma com Flutter e Dart. O público é leigo em programação. Responda à seguinte pergunta de forma clara, concisa e amigável, usando HTML simples para formatação se necessário (como <p>, <strong>, <ul>, <li>): "${question}"`;
 
                 try {
                     let chatHistory = []; 
-                    // Para um chatbot mais avançado, você poderia manter o histórico aqui.
-                    // Por simplicidade, cada pergunta é tratada isoladamente por enquanto.
                     chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                     const payload = { contents: chatHistory };
                     const apiKey = "AIzaSyDmLoW7q6ZgccZoIxjsTwu8zvgyKtQbhpo"; 
@@ -718,7 +716,7 @@
                 } finally {
                     loadingIndicator.style.display = 'none';
                     askChatbotBtn.disabled = false;
-                    userQuestionInput.focus(); // Devolve o foco ao input
+                    userQuestionInput.focus(); 
                 }
             });
         }
