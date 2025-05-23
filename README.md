@@ -52,15 +52,13 @@ A chave da API Gemini (`apiKey`) está diretamente no código JavaScript. Para q
 
 ```javascript
 // Dentro do <script> no final do HTML
-const apiKey = "SUA_CHAVE_API_AQUI"; // A chave que me forneceste já está no código do artefato
+const apiKey = "SUA_CHAVE_API_AQUI"; 
 ```
 
 ## 🖼️ Demonstração (Sugestão)
 
-*(Aqui podes adicionar screenshots ou, idealmente, um GIF animado mostrando a apresentação em ação, especialmente a funcionalidade do chatbot!)*
-
 **Exemplo de Screenshot:**
-![Screenshot do Chatbot em Ação](https://placehold.co/600x400/E0E7FF/4F46E5?text=Chatbot+Respondendo)
+![Screenshot do Chatbot em Ação](/Captura%20de%20tela%202025-05-22%20210014.png)
 
 ## 🤝 Colaboração e Aprendizado com Gemini
 
