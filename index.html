@@ -85,250 +85,83 @@
             width: 0%;
             transition: width 0.3s ease-in-out;
         }
-        h1 {
-            font-size: 2.25rem; 
-            font-weight: bold;
-            margin-bottom: 1rem; 
-            color: #374151; 
-        }
-        @media (min-width: 768px) { 
-            h1 {
-                font-size: 3rem; 
-            }
-        }
-         @media (min-width: 1024px) { 
-            h1 {
-                font-size: 3.75rem; 
-            }
-        }
-        h2 {
-            font-size: 1.5rem; 
-            font-weight: bold;
-            margin-bottom: 1.5rem; 
-            color: #4F46E5; 
-        }
-         @media (min-width: 768px) { 
-            h2 {
-                 font-size: 1.875rem; 
-            }
-        }
-        p, li {
-            font-size: 1rem; 
-            line-height: 1.75; 
-            color: #4B5563; 
-            margin-bottom: 1rem;
-        }
-         @media (min-width: 768px) { 
-            p, li {
-                font-size: 1.125rem; 
-            }
-        }
-        .highlight {
-            color: #4F46E5; 
-            font-weight: bold;
-        }
-        .image-container {
-            margin: 20px auto; 
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            max-width: 100%; 
-        }
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        .icon {
-            width: 60px; 
-            height: 60px;
-            margin-bottom: 1rem;
-        }
-        @media (min-width: 768px) { 
-            .icon {
-                width: 80px;
-                height: 80px;
-            }
-        }
-        .grid-cols-custom {
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-        }
-        .card {
+        h1 { font-size: 2.25rem; font-weight: bold; margin-bottom: 1rem; color: #374151; }
+        @media (min-width: 768px) { h1 { font-size: 3rem; } }
+        @media (min-width: 1024px) { h1 { font-size: 3.75rem; } }
+        h2 { font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; color: #4F46E5; }
+        @media (min-width: 768px) { h2 { font-size: 1.875rem; } }
+        p, li { font-size: 1rem; line-height: 1.75; color: #4B5563; margin-bottom: 1rem;}
+        @media (min-width: 768px) { p, li { font-size: 1.125rem; } }
+        .highlight { color: #4F46E5; font-weight: bold; }
+        .image-container { margin: 20px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 100%; }
+        .image-container img { max-width: 100%; height: auto; display: block; }
+        .icon { width: 60px; height: 60px; margin-bottom: 1rem; }
+        @media (min-width: 768px) { .icon { width: 80px; height: 80px; } }
+        .card { background-color: white; border-radius: 12px; padding: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: left; display: flex; flex-direction: column; height: 100%; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+
+        /* ================================== */
+        /* CSS MELHORADO PARA OS CARDS        */
+        /* ================================== */
+        .example-card {
             background-color: white;
             border-radius: 12px;
-            padding: 20px; 
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            /* Aumentei o padding vertical para py-6 */
+            padding: 1.5rem 1rem; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-        }
-        .logo {
-            height: 40px; 
-            margin: 0 8px;
-            object-fit: contain; 
-        }
-         @media (min-width: 768px) { 
-            .logo {
-                height: 50px;
-                margin: 0 10px;
-            }
-        }
-
-        /* Estilos para a funcionalidade Chatbot */
-        .chatbot-container {
-            background-color: #f0f4ff; 
-            padding: 15px; 
-            border-radius: 12px;
-            margin-top: 20px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .chatbot-input {
-            width: 100%;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 1px solid #cbd5e1; 
-            margin-bottom: 10px; 
-            font-size: 0.9rem; 
-             box-sizing: border-box;
-        }
-         @media (min-width: 640px) { 
-            .chatbot-input {
-                font-size: 1rem;
-            }
-        }
-        .chatbot-button {
-            background-color: #10B981; 
-            color: white;
-            padding: 10px 20px; 
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            border: none;
-            font-size: 0.9rem; 
-            margin-bottom: 15px; 
-        }
-         @media (min-width: 640px) { 
-            .chatbot-button {
-                 padding: 10px 25px;
-                 font-size: 1rem;
-            }
-        }
-        .chatbot-button:hover {
-            background-color: #059669; 
-        }
-        .chatbot-button:disabled {
-            background-color: #6EE7B7; 
-            cursor: not-allowed;
-        }
-        .chat-area {
-            margin-top: 15px; 
-            padding: 10px; 
-            background-color: white;
-            border-radius: 8px;
-            text-align: left;
-            min-height: 150px; 
-            max-height: 300px; 
-            overflow-y: auto; 
-            border: 1px solid #e2e8f0;
-            word-wrap: break-word; 
-            overflow-wrap: break-word; 
-        }
-        .chat-message {
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            max-width: 85%;
-            line-height: 1.4;
-        }
-        .chat-message.user {
-            background-color: #DBEAFE; 
-            color: #1E40AF; 
-            margin-left: auto; 
-            text-align: right;
-        }
-        .chat-message.assistant {
-            background-color: #F3E8FF; 
-            color: #5B21B6; 
-            margin-right: auto; 
-            text-align: left;
-        }
-         .chat-message p {
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem; 
-        }
-        .chat-message strong { 
-            display: block;
-            font-size: 0.75rem;
-            margin-bottom: 4px;
-            color: #4B5563;
-        }
-
-
-        .loading-spinner {
-            border: 4px solid #f3f3f3; 
-            border-top: 4px solid #10B981; 
-            border-radius: 50%;
-            width: 25px; 
-            height: 25px;
-            animation: spin 1s linear infinite;
-            margin: 10px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 2000; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.4); 
-            padding-top: 10%; 
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto; 
-            padding: 20px;
-            border: 1px solid #888;
-            width: 90%; 
-            max-width: 450px; 
-            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            /* Centraliza todo o conteúdo */
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            /* Prepara para a animação */
+            opacity: 0;
         }
-        .modal-content h3 {
-            color: #4F46E5;
-            margin-bottom: 15px;
-            font-size: 1.25rem; 
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
         }
-        .modal-content p {
-            font-size: 0.9rem; 
-            color: #4B5563;
-            margin-bottom: 20px;
+        /* Animação de entrada para os cards */
+        .slide.active .example-card {
+            animation: fadeIn 0.5s ease-out forwards;
         }
-        .modal-close-button {
-            background-color: #4F46E5;
-            color: white;
-            padding: 8px 16px; 
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.9rem; 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .modal-close-button:hover {
-            background-color: #4338CA;
-        }
+        /* Atraso para cada card aparecer em sequência */
+        .example-card:nth-child(1) { animation-delay: 0.1s; }
+        .example-card:nth-child(2) { animation-delay: 0.2s; }
+        .example-card:nth-child(3) { animation-delay: 0.3s; }
+        .example-card:nth-child(4) { animation-delay: 0.4s; }
+        .example-card:nth-child(5) { animation-delay: 0.5s; }
+        .example-card:nth-child(6) { animation-delay: 0.6s; }
+        /* ================================== */
 
+        .logo { height: 40px; margin: 0 8px; object-fit: contain; }
+        @media (min-width: 768px) { .logo { height: 50px; margin: 0 10px; } }
+        .chatbot-container { background-color: #f0f4ff; padding: 15px; border-radius: 12px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); width: 100%; box-sizing: border-box; }
+        .chatbot-input { width: 100%; padding: 10px 15px; border-radius: 8px; border: 1px solid #cbd5e1; margin-bottom: 10px; font-size: 0.9rem; box-sizing: border-box; }
+        @media (min-width: 640px) { .chatbot-input { font-size: 1rem; } }
+        .chatbot-button { background-color: #10B981; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background-color 0.3s; border: none; font-size: 0.9rem; margin-bottom: 15px; }
+        @media (min-width: 640px) { .chatbot-button { padding: 10px 25px; font-size: 1rem; } }
+        .chatbot-button:hover { background-color: #059669; }
+        .chatbot-button:disabled { background-color: #6EE7B7; cursor: not-allowed; }
+        .chat-area { margin-top: 15px; padding: 10px; background-color: white; border-radius: 8px; text-align: left; min-height: 150px; max-height: 300px; overflow-y: auto; border: 1px solid #e2e8f0; word-wrap: break-word; overflow-wrap: break-word; }
+        .chat-message { padding: 8px 12px; border-radius: 8px; margin-bottom: 8px; max-width: 85%; line-height: 1.4; }
+        .chat-message.user { background-color: #DBEAFE; color: #1E40AF; margin-left: auto; text-align: right; }
+        .chat-message.assistant { background-color: #F3E8FF; color: #5B21B6; margin-right: auto; text-align: left; }
+        .chat-message p { font-size: 0.9rem; margin-bottom: 0.25rem; }
+        .chat-message strong { display: block; font-size: 0.75rem; margin-bottom: 4px; color: #4B5563; }
+        .loading-spinner { border: 4px solid #f3f3f3; border-top: 4px solid #10B981; border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; margin: 10px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); padding-top: 10%; }
+        .modal-content { background-color: #fefefe; margin: auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 450px; border-radius: 12px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .modal-content h3 { color: #4F46E5; margin-bottom: 15px; font-size: 1.25rem; }
+        .modal-content p { font-size: 0.9rem; color: #4B5563; margin-bottom: 20px; }
+        .modal-close-button { background-color: #4F46E5; color: white; padding: 8px 16px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .modal-close-button:hover { background-color: #4338CA; }
     </style>
 </head>
 <body class="bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100">
@@ -363,13 +196,13 @@
             <div class="grid md:grid-cols-2 gap-4 md:gap-8 my-6 md:my-8">
                 <div class="card">
                     <img src="https://img.icons8.com/color/96/android-os.png" alt="Logo Android" class="h-12 md:h-16 mx-auto mb-2 md:mb-4">
-                    <h3 class="text-lg md:text-xl font-semibold text-green-600 mb-2">Um para Android</h3>
-                    <p class="text-xs md:text-sm">Com uma "linguagem" e "ferramentas" específicas para smartphones Android (Samsung, Xiaomi, Motorola...).</p>
+                    <h3 class="text-lg md:text-xl font-semibold text-green-600 mb-2 text-center">Um para Android</h3>
+                    <p class="text-xs md:text-sm text-center">Com uma "linguagem" e "ferramentas" específicas para smartphones Android (Samsung, Xiaomi, Motorola...).</p>
                 </div>
                 <div class="card">
                      <img src="https://img.icons8.com/ios-filled/96/mac-os.png" alt="Logo Apple iOS" class="h-12 md:h-16 mx-auto mb-2 md:mb-4">
-                    <h3 class="text-lg md:text-xl font-semibold text-gray-700 mb-2">Outro para iOS</h3>
-                    <p class="text-xs md:text-sm">Com uma "linguagem" e "ferramentas" <span class="highlight">totalmente diferentes</span> para iPhones e iPads da Apple.</p>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-700 mb-2 text-center">Outro para iOS</h3>
+                    <p class="text-xs md:text-sm text-center">Com uma "linguagem" e "ferramentas" <span class="highlight">totalmente diferentes</span> para iPhones e iPads da Apple.</p>
                 </div>
             </div>
             <p>Isto significa <span class="highlight">mais trabalho, mais tempo e mais custo!</span> É como construir duas casas idênticas, mas com tijolos e plantas diferentes.</p>
@@ -394,14 +227,14 @@
             <img src="https://img.icons8.com/color/96/flutter.png" alt="Logo Flutter" class="icon mx-auto">
             <h2>Conhecendo os Nossos Heróis: Flutter & Dart</h2>
             <div class="grid md:grid-cols-2 gap-4 md:gap-8 my-6 md:my-8">
-                <div class="card">
+                <div class="card text-center">
                     <img src="https://img.icons8.com/color/96/flutter.png" alt="Logo Flutter" class="h-12 md:h-16 mx-auto mb-2 md:mb-4">
                     <h3 class="text-lg md:text-xl font-semibold text-sky-600 mb-2">O que é o Flutter?</h3>
                     <p class="text-xs md:text-sm">Pensem no Flutter como um <span class="highlight">super kit de construção de interfaces</span> para aplicativos. Ele é como uma caixa cheia de peças de Lego muito modernas e bonitas (chamadas <span class="highlight">Widgets</span>).</p>
                     <p class="text-xs md:text-sm">Com estas peças, podemos montar telas de aplicativos que são <span class="highlight">lindas e funcionam de forma fluida</span>, como se fossem mágicas!</p>
                     <p class="mt-2 text-xs text-gray-500">Criado pela Google!</p>
                 </div>
-                <div class="card">
+                <div class="card text-center">
                     <img src="https://img.icons8.com/color/96/dart.png" alt="Logo Dart" class="h-12 md:h-16 mx-auto mb-2 md:mb-4">
                     <h3 class="text-lg md:text-xl font-semibold text-teal-600 mb-2">E o Dart? O que é?</h3>
                     <p class="text-xs md:text-sm">O Dart é a <span class="highlight">linguagem de programação</span> que o Flutter usa. É como o <span class="highlight">idioma especial</span> que os construtores (programadores) usam para dizer ao Flutter como montar as peças e o que cada uma deve fazer.</p>
@@ -416,17 +249,18 @@
     <div id="slide5" class="slide">
         <div class="slide-content">
             <img src="https://img.icons8.com/fluency/96/puzzle.png" alt="Ícone de Quebra-Cabeça" class="icon mx-auto">
-            <h2>Como Funciona na Prática? (Sem Códigos Complicados!)</h2>
+            <h2>Como Funciona na Prática? Construindo com Blocos (Widgets)</h2>
             <p>Imaginem que cada pedacinho da tela do seu aplicativo favorito (um botão, um texto, uma imagem) é um <span class="highlight">"Widget"</span> – uma peça do nosso kit Flutter.</p>
             <div class="my-6 md:my-8 p-4 md:p-6 bg-white rounded-xl shadow-xl">
-                <h3 class="text-xl md:text-2xl font-semibold text-indigo-600 mb-4">Construindo com Blocos (Widgets)</h3>
-                <p class="text-left text-xs md:text-sm">Pensem assim:</p>
-                <ul class="list-disc list-inside text-left mt-2 space-y-1 md:space-y-2 text-xs md:text-sm">
+                <h3 class="text-xl md:text-2xl font-semibold text-indigo-600 mb-4">A Lógica dos Widgets</h3>
+                <p class="text-left text-sm md:text-base">Pensem assim:</p>
+                <ul class="list-disc list-inside text-left mt-2 space-y-1 md:space-y-2 text-sm md:text-base">
                     <li>Quer um <span class="highlight">título</span>? Use o widget de Texto!</li>
                     <li>Precisa de um <span class="highlight">botão</span> para clicar? Use o widget de Botão!</li>
                     <li>Quer mostrar uma <span class="highlight">foto</span>? Use o widget de Imagem!</li>
+                    <li>Até o <span class="highlight">espaçamento vazio</span> entre eles é um widget!</li>
                 </ul>
-                <p class="mt-3 md:mt-4 text-left text-xs md:text-sm">Os programadores combinam estes widgets, como se estivessem montando um quebra-cabeça, para criar a tela inteira do aplicativo. <span class="highlight">Tudo é um widget!</span></p>
+                <p class="mt-3 md:mt-4 text-left text-sm md:text-base">Os programadores combinam estes widgets, como se estivessem montando um quebra-cabeça, para criar a tela inteira do aplicativo. <span class="highlight">Tudo é um widget!</span></p>
                  <div class="flex justify-center items-center space-x-2 md:space-x-4 my-4 md:my-6">
                     <div class="text-center">
                         <img src="https://img.icons8.com/fluency/48/text-box.png" alt="Widget de Texto" class="h-8 md:h-10 mx-auto"/>
@@ -453,8 +287,56 @@
             <p>O mais legal? O Flutter pega neste "manual de instruções" feito em Dart e <span class="highlight">traduz automaticamente</span> para que funcione perfeitamente tanto no Android quanto no iOS. É como mágica!</p>
         </div>
     </div>
-
+    
     <div id="slide6" class="slide">
+        <div class="slide-content">
+            <img src="https://img.icons8.com/fluency/96/ok.png" alt="Ícone de Sucesso" class="icon mx-auto">
+            <h2>Quem Confia no Flutter? Gigantes da Tecnologia!</h2>
+            <p>Flutter não é apenas uma promessa, é uma realidade consolidada e usada por algumas das maiores empresas do mundo para seus aplicativos principais.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 my-6 md:my-8">
+                
+                <div class="example-card">
+                    <img src="/nubank-logo-2021.svg" alt="Logo Nubank" class="h-8 mx-auto mb-4">
+                    <h3 class="text-lg font-bold text-purple-600 mb-2">Nubank</h3>
+                    <p class="text-sm leading-relaxed">O maior banco digital do ocidente usa Flutter para acelerar o desenvolvimento. Lançaram o seguro de vida em <span class="font-bold">apenas 3 meses</span>.</p>
+                </div>
+
+                <div class="example-card">
+                    <img src="https://img.icons8.com/color/96/bmw.png" alt="Logo BMW" class="h-10 mx-auto mb-4">
+                    <h3 class="text-lg font-bold text-blue-800 mb-2">My BMW</h3>
+                    <p class="text-sm leading-relaxed">Desenvolveu seu novo app <span class="font-bold">totalmente em Flutter</span>, unificando a experiência para usuários de iOS e Android com um único código.</p>
+                </div>
+
+                <div class="example-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/2560px-Google_Pay_Logo.svg.png" alt="Logo Google Pay" class="h-8 mx-auto mb-4">
+                     <h3 class="text-lg font-bold text-gray-700 mb-2">Google Pay</h3>
+                    <p class="text-sm leading-relaxed">O próprio Google reescreveu seu app para melhorar a <span class="font-bold">performance e escalabilidade</span> tanto no Android quanto no iOS.</p>
+                </div>
+
+                <div class="example-card">
+                    <img src="/alibaba_logo_icon_134594.png" alt="Logo Alibaba" class="h-10 mx-auto mb-4">
+                     <h3 class="text-lg font-bold text-orange-500 mb-2">Alibaba</h3>
+                    <p class="text-sm leading-relaxed">A gigante do e-commerce utiliza Flutter para garantir uma <span class="font-bold">experiência de usuário fluida</span> para milhões de clientes.</p>
+                </div>
+
+                <div class="example-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EBay_logo.svg/2560px-EBay_logo.svg.png" alt="Logo eBay" class="h-8 mx-auto mb-4">
+                    <h3 class="text-lg font-bold text-red-600 mb-2">eBay</h3>
+                    <p class="text-sm leading-relaxed">Aproveitou a <span class="font-bold">rapidez no desenvolvimento</span> e a criação de interfaces ricas para apps como o eBay Motors.</p>
+                </div>
+
+                 <div class="example-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/2560px-Toyota_carlogo.svg.png" alt="Logo Toyota" class="h-6 mx-auto mb-4">
+                    <h3 class="text-lg font-bold text-red-700 mb-2">Toyota</h3>
+                    <p class="text-sm leading-relaxed">Adotou Flutter para os sistemas de infoentretenimento de seus carros, mostrando sua capacidade <span class="font-bold">além de celulares</span>.</p>
+                </div>
+
+            </div>
+            <p>Esses exemplos mostram que o Flutter é a escolha certa para projetos que exigem <span class="highlight">performance, agilidade e um design incrível</span>.</p>
+        </div>
+    </div>
+
+    <div id="slide7" class="slide">
         <div class="slide-content">
              <img src="https://img.icons8.com/fluency/96/groups.png" alt="Ícone de Pessoas Felizes" class="icon mx-auto">
             <h2>Vantagens para Todo Mundo! 🎉</h2>
@@ -462,7 +344,7 @@
             <div class="grid md:grid-cols-2 gap-4 md:gap-8 my-6 md:my-8">
                 <div class="card">
                     <img src="https://img.icons8.com/fluency/48/rocket.png" alt="Foguete" class="h-10 md:h-12 mx-auto mb-2 md:mb-3"/>
-                    <h3 class="text-lg md:text-xl font-semibold text-indigo-600 mb-2">Para quem CRIA (Programadores):</h3>
+                    <h3 class="text-lg md:text-xl font-semibold text-indigo-600 mb-2 text-center">Para quem CRIA (Programadores):</h3>
                     <ul class="list-disc list-inside text-left text-xs md:text-sm space-y-1">
                         <li><span class="highlight">Mais Rápido:</span> Escreve o código uma vez só.</li>
                         <li><span class="highlight">Mais Fácil:</span> Ferramentas que ajudam muito.</li>
@@ -472,7 +354,7 @@
                 </div>
                 <div class="card">
                     <img src="https://img.icons8.com/fluency/48/smiling-face-with-heart.png" alt="Rosto Feliz" class="h-10 md:h-12 mx-auto mb-2 md:mb-3"/>
-                    <h3 class="text-lg md:text-xl font-semibold text-pink-600 mb-2">Para quem USA (Vocês!):</h3>
+                    <h3 class="text-lg md:text-xl font-semibold text-pink-600 mb-2 text-center">Para quem USA (Vocês!):</h3>
                      <ul class="list-disc list-inside text-left text-xs md:text-sm space-y-1">
                         <li><span class="highlight">Apps Incríveis:</span> Visual bonito e que funciona bem.</li>
                         <li><span class="highlight">Consistência:</span> O app parece o mesmo e funciona igual no Android e no iPhone do amigo.</li>
@@ -484,35 +366,30 @@
              <p>No final, todo mundo sai ganhando com aplicativos melhores, feitos de forma mais inteligente!</p>
         </div>
     </div>
-
-    <div id="slide7" class="slide">
+    
+    <div id="slide8" class="slide">
         <div class="slide-content">
-            <img src="https://img.icons8.com/fluency/96/robot-2.png" alt="Ícone de Chatbot" class="icon mx-auto"> <h2>Pergunte à IA sobre o Tema! 🤖</h2> <p>Tem alguma dúvida sobre desenvolvimento multiplataforma, Flutter ou Dart? A IA pode ajudar a esclarecer!</p>
+            <img src="https://img.icons8.com/fluency/96/robot-2.png" alt="Ícone de Chatbot" class="icon mx-auto"> 
+            <h2>Pergunte à IA sobre o Tema! 🤖</h2>
+            <p>Tem alguma dúvida sobre desenvolvimento multiplataforma, Flutter ou Dart? A IA pode ajudar a esclarecer!</p>
             
             <div class="chatbot-container">
-                <h3 class="text-xl md:text-2xl font-semibold text-emerald-600 mb-3 md:mb-4">💬 Chat com o Assistente Virtual</h3>
+                <h3 class="text-xl md:text-2xl font-semibold text-emerald-600 mb-3 md:mb-4 text-center">💬 Chat com o Assistente Virtual</h3>
                 <div id="chatArea" class="chat-area">
                     <div class="chat-message assistant"><p>Olá! Sou seu assistente virtual. Pergunte-me algo sobre Flutter, Dart ou desenvolvimento multiplataforma.</p></div>
                 </div>
                 <div id="loadingIndicator" class="loading-spinner" style="display: none;"></div>
-                <input type="text" id="userQuestionInput" class="chatbot-input" placeholder="Digite sua pergunta aqui...">
-                <button id="askChatbotBtn" class="chatbot-button">Perguntar à IA</button>
+                 <div class="text-center">
+                    <input type="text" id="userQuestionInput" class="chatbot-input" placeholder="Digite sua pergunta aqui...">
+                    <button id="askChatbotBtn" class="chatbot-button">Perguntar à IA</button>
+                </div>
             </div>
 
             <p class="mt-6 md:mt-8 text-sm">Lembre-se: A IA é uma ferramenta para ajudar, mas as informações podem precisar de verificação para contextos críticos.</p>
-            
-            <p class="mt-6 md:mt-8">Muitas empresas grandes já usam Flutter! Por exemplo:</p>
-            <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4 my-3 md:my-4">
-                <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" class="logo" title="Google">
-                <img src="https://img.icons8.com/color/48/bmw.png" alt="BMW" class="logo" title="BMW">
-                <img src="https://logo.clearbit.com/alibaba.com" alt="Alibaba" class="logo" title="Alibaba">
-                 <img src="https://logo.clearbit.com/nubank.com.br" alt="Nubank" class="logo" title="Nubank">
-            </div>
-            <p class="text-xs text-gray-500">(Exemplos de empresas que usam Flutter em alguns dos seus produtos. Logos são marcas registradas dos seus respectivos proprietários.)</p>
         </div>
     </div>
 
-    <div id="slide8" class="slide">
+    <div id="slide9" class="slide">
         <div class="slide-content">
             <img src="https://img.icons8.com/external-justicon-flat-justicon/64/external-globe-map-and-location-justicon-flat-justicon.png" alt="Ícone de Globo" class="icon mx-auto">
             <h2>O Futuro é Multiplataforma! 🚀</h2>
@@ -525,7 +402,7 @@
         </div>
     </div>
 
-    <div id="slide9" class="slide">
+    <div id="slide10" class="slide">
         <div class="slide-content">
             <img src="https://img.icons8.com/fluency/96/speech-bubble-with-dots.png" alt="Ícone de Perguntas" class="icon mx-auto">
             <h1 class="text-indigo-700">Perguntas?</h1>
@@ -536,14 +413,14 @@
         </div>
     </div>
 
-    <div id="slide10" class="slide">
+    <div id="slide11" class="slide">
         <div class="slide-content">
             <img src="https://img.icons8.com/fluency/96/confetti.png" alt="Ícone de Confete" class="icon mx-auto">
             <h1 class="text-indigo-700">Obrigado!</h1>
             <p class="text-xl md:text-2xl text-gray-700 my-6 md:my-8">Espero que tenham gostado de conhecer um pouquinho sobre o desenvolvimento multiplataforma com Flutter e Dart!</p>
             <div class="mt-8 md:mt-10">
-                <img src="https://img.icons8.com/color/48/flutter.png" alt="Logo Flutter" class="inline-block h-10 md:h-12">
-                <img src="https://img.icons8.com/color/48/dart.png" alt="Logo Dart" class="inline-block h-10 md:h-12">
+                <p class="mb-4">Apresentado por:</p>
+                <p class="text-sm text-gray-600">Adioney Paulo, Gabriel Silva, Guilherme de Carvalho, Jhoan Henrique, João Antônio, João Pedro</p>
             </div>
         </div>
     </div>
@@ -560,13 +437,11 @@
         const nextBtn = document.getElementById('nextBtn');
         let currentSlide = 0;
 
-        // Elementos da funcionalidade Chatbot
         const userQuestionInput = document.getElementById('userQuestionInput');
         const askChatbotBtn = document.getElementById('askChatbotBtn');
         const loadingIndicator = document.getElementById('loadingIndicator');
         const chatArea = document.getElementById('chatArea');
 
-        // Elementos do Modal
         const messageModal = document.getElementById('messageModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalMessageText = document.getElementById('modalMessageText');
@@ -605,7 +480,7 @@
             const activeSlideElement = slides[currentSlide];
             if (activeSlideElement) {
                 setTimeout(() => {
-                    activeSlideElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    activeSlideElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 100);
             }
         }
@@ -627,9 +502,9 @@
         });
 
         document.addEventListener('keydown', (event) => {
-            if (document.activeElement === userQuestionInput) { // Verifica se o foco está no input do chatbot
+            if (userQuestionInput && document.activeElement === userQuestionInput) { 
                 if (event.key === 'Enter') {
-                    askChatbotBtn.click(); // Simula clique no botão de perguntar
+                    askChatbotBtn.click();
                 }
                 return; 
             }
@@ -660,7 +535,6 @@
             chatArea.scrollTop = chatArea.scrollHeight; 
         }
 
-
         if (askChatbotBtn) {
             askChatbotBtn.addEventListener('click', async () => {
                 const question = userQuestionInput.value.trim();
@@ -681,8 +555,9 @@
                     let chatHistory = []; 
                     chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                     const payload = { contents: chatHistory };
+                    
                     const apiKey = "AIzaSyDmLoW7q6ZgccZoIxjsTwu8zvgyKtQbhpo"; 
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
                     
                     const response = await fetch(apiUrl, {
                         method: 'POST',
@@ -691,36 +566,36 @@
                     });
 
                     if (!response.ok) {
-                        const errorBody = await response.text();
+                        const errorBody = await response.json();
                         console.error("Erro na API:", response.status, errorBody);
-                        throw new Error(`Erro ao comunicar com a API: ${response.status}. Detalhes no console.`);
+                        let errorMessage = `Erro ao comunicar com a API: ${response.status}.`;
+                        if (errorBody.error && errorBody.error.message) {
+                            errorMessage += ` Detalhe: ${errorBody.error.message}`;
+                        }
+                        throw new Error(errorMessage);
                     }
 
                     const result = await response.json();
 
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
+                    if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0]) {
                         const assistantResponse = result.candidates[0].content.parts[0].text;
                         appendMessage(assistantResponse, 'assistant');
                     } else {
                         console.error("Resposta da API inesperada:", result);
-                        appendMessage("Desculpe, não consegui processar a resposta da IA.", 'assistant');
-                        throw new Error("Não foi possível obter a resposta. A resposta da API não continha o conteúdo esperado.");
+                        appendMessage("Desculpe, não consegui processar a resposta da IA. Formato inesperado.", 'assistant');
                     }
                 } catch (error) {
                     console.error('Erro ao obter resposta do chatbot:', error);
                     const errorMessage = `Ocorreu um erro: ${error.message}. Tente novamente.`;
                     appendMessage(errorMessage, 'assistant');
-                    showModal("Erro no Chatbot", `${errorMessage}<br>Verifique o console para mais detalhes.`);
+                    showModal("Erro no Chatbot", `${errorMessage}<br>Verifique o console do navegador para mais detalhes.`);
                 } finally {
                     loadingIndicator.style.display = 'none';
                     askChatbotBtn.disabled = false;
-                    userQuestionInput.focus(); 
+                    if(userQuestionInput) userQuestionInput.focus(); 
                 }
             });
         }
-
     </script>
 </body>
 </html>
